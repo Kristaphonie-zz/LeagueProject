@@ -1,0 +1,10 @@
+<header class='nav-bar'>
+  <div class='home-bar-text' data-text-position='left'><a href='' ng-click='openChamps()'>Champions</a></div>
+</header>
+
+<img class='league-image' src='images/league-legends.png' data-change-logo='yes'>
+<div class='champ-container'>
+  <div class='champ-display' ng-repeat='champs in championUrls'>
+    <a href=''><img class='champ-thumbnail' ng-src='{{champs.url}}' ng-click='displayChamp(champs.champ)'></a>
+  </div>
+</div>
