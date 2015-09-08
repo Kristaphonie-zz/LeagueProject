@@ -6,24 +6,20 @@
 angular.module('leagueProjectApp')
   .service('mainService', function($state) {
     var chosenChamp = '';
-    var champUrls = [];
     this.changeLogoAndGoToChamps = function() {
       $('.home-bar-text').attr('data-text-position', 'left');
       $('.league-image').attr('data-change-logo', 'yes');
     };
 
     this.buildImgUrl = function(champions) {
-
+      var champUrls = [];
+      console.log(champions);
       for (var key in champions) {
         //for (var spellsKey in champions[key].spells[i]) {
         console.log(key);
         champUrls.push({
           url: 'http://ddragon.leagueoflegends.com/cdn/4.4.3/img/champion/' + key + '.png',
-          champ: key.toString(),
-          spellUrlQ: 'http://ddragon.leagueoflegends.com/cdn/4.4.3/img/spell/' + champions[key].spells[0].image.full,
-          spellUrlW: 'http://ddragon.leagueoflegends.com/cdn/4.4.3/img/spell/' + champions[key].spells[1].image.full,
-          spellUrlE: 'http://ddragon.leagueoflegends.com/cdn/4.4.3/img/spell/' + champions[key].spells[2].image.full,
-          spellUrlR: 'http://ddragon.leagueoflegends.com/cdn/4.4.3/img/spell/' + champions[key].spells[3].image.full
+          champ: key.toString()
         });
       }
 
@@ -37,12 +33,27 @@ angular.module('leagueProjectApp')
       return champUrls;
     };
 
+
+
     this.saveChampImages = function(champ) {
       chosenChamp = champ;
       $state.go('chosenChamp', {champ: champ});
     };
 
-    this.getChosenChampion = function() {
-      return chosenChamp;
+    this.getChosenChampion = function(champions) {
+      var chosenChampUrls = [];
+
+        chosenChampUrls.push({
+          splashURL: 'http://ddragon.leagueoflegends.com/cdn/img/champion/loading/' + chosenChamp + '_0.jpg',
+          passiveUrl: 'http://ddragon.leagueoflegends.com/cdn/4.4.3/img/passive/' + champions[chosenChamp].passive.image.full,
+          spellUrlQ: 'http://ddragon.leagueoflegends.com/cdn/4.4.3/img/spell/' + champions[chosenChamp].spells[0].image.full,
+          spellUrlW: 'http://ddragon.leagueoflegends.com/cdn/4.4.3/img/spell/' + champions[chosenChamp].spells[1].image.full,
+          spellUrlE: 'http://ddragon.leagueoflegends.com/cdn/4.4.3/img/spell/' + champions[chosenChamp].spells[2].image.full,
+          spellUrlR: 'http://ddragon.leagueoflegends.com/cdn/4.4.3/img/spell/' + champions[chosenChamp].spells[3].image.full
+        });
+
+      console.log(chosenChampUrls);
+
+      return chosenChampUrls[0];
     }
   });

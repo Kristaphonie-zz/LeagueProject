@@ -5,11 +5,20 @@
 <img class='league-image' src='images/league-legends.png' data-change-logo='yes'>
 
 <div class='champ-info-container'>
-  <img src={{champ.splashUrl}} class='champ-splash'>
+  <img src={{champ.splashURL}} class='champ-splash'>
 
-  <img src='{{champ.passiveUrl}}'>
-  <img src='{{champ.spellUrlQ}}'>
-  <img src='{{champ.spellUrlW}}'>
-  <img src='{{champ.spellUrlE}}'>
-  <img src='{{champ.spellUrlR}}'>
+  <div class='champ-spells-container'>
+    <img class='spell-images passive' src='{{champ.passiveUrl}}'>
+    <img class='spell-images spell-q' src='{{champ.spellUrlQ}}'>
+    <img class='spell-images spell-w' src='{{champ.spellUrlW}}'>
+    <img class='spell-images spell-e' src='{{champ.spellUrlE}}'>
+    <img class='spell-images spell-r' src='{{champ.spellUrlR}}'>
+  </div>
+  <div class='text-container'>
+    <div class='spell-text-passive'></div>
+    <div class='spell-text-q'></div>
+    <div class='spell-text-w'></div>
+    <div class='spell-text-e'></div>
+    <div class='spell-text-r'></div>
+  </div>
 </div>

@@ -22,7 +22,6 @@ angular.module('leagueProjectApp')
       $state.go('logout');
     };
 
-    $scope.champ = mainService.getChosenChampion();
-
-    console.log($scope.champ);
+    $scope.champions = restService.returnChampions();
+    $scope.champ = mainService.getChosenChampion($scope.champions);
   });
